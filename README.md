@@ -9,7 +9,7 @@ This project demonstrates an end-to-end distributed tracing workflow using:
 <p align="center">
   <img src="distributedtracing.png" alt="Kubernetes Cluster Diagram" width="70%" style="margin-top: 20px; margin-bottom: 20px;"/>
 </p>
-## Setup
+
 
 ### Step 1: Deploy Kubernetes Cluster
 
