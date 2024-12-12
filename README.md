@@ -7,9 +7,11 @@ This project demonstrates an end-to-end distributed tracing workflow using:
 - **OpenTelemetry**
 - **Elasticsearch**
 <p align="center">
-  <img src="distributedtracing.svg" alt="Kubernetes Cluster Diagram" width="90%" style="margin-top: 20px; margin-bottom: 20px;"/>
+  <img src="distributedtracing.svg" width="90%" style="margin-top: 20px; margin-bottom: 20px;"/>
 </p>
-
+<p align="center">
+  <img src="traceworkflow.svg" width="90%" style="margin-top: 20px; margin-bottom: 20px;"/>
+</p>
 
 ### Step 1: Deploy Kubernetes Cluster
 
