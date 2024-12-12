@@ -24,7 +24,33 @@ worker-node02   NotReady   <none>          23h   v1.29.12   192.168.56.12   <non
 worker-node03   NotReady   <none>          23h   v1.29.12   192.168.56.13   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
 vagrant@master-node:~$
 ```
-### Step 2: Install Jaeger
+### Step 2: Deploy Elasticsearch
+
+Set up Elasticsearch on a separate VM by following the steps in [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04). Verify Elasticsearch is reachable from your Kubernetes cluster:
+
+```bash
+vagrant@elasticsearch:~$ curl -X GET 'http://192.168.56.85:9200/_cluster/health?pretty'
+{
+  "cluster_name" : "elasticsearch",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,      
+  "active_primary_shards" : 23,    
+  "active_shards" : 23,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,       
+  "unassigned_shards" : 20,        
+  "delayed_unassigned_shards" : 0, 
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 53.48837209302325  
+}
+vagrant@elasticsearch:~$ 
+```
+
+### Step 3: Install Jaeger
 
 Deploy Jaeger using Helm and configure it to use the Elasticsearch backend:
 
@@ -88,7 +114,7 @@ NAME           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTO
 jaeger-agent   1         1         1       1            1           <none>          20h   jaeger-agent   jaegertracing/jaeger-agent:1.53.0   app.kubernetes.io/component=agent,app.kubernetes.io/instance=jaeger,app.kubernetes.io/name=jaeger
 vagrant@master-node:~$ 
 ```
-### Step 3: Install OpenTelemetry
+### Step 4: Install OpenTelemetry
 
 Instead of using the OpenTelemetry operator, install OpenTelemetry packages using pip:
 
@@ -165,32 +191,6 @@ def backend_internal():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 
-```
-
-### Step 4: Deploy Elasticsearch
-
-Set up Elasticsearch on a separate VM by following the steps in [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04). Verify Elasticsearch is reachable from your Kubernetes cluster:
-
-```bash
-vagrant@elasticsearch:~$ curl -X GET 'http://192.168.56.85:9200/_cluster/health?pretty'
-{
-  "cluster_name" : "elasticsearch",
-  "status" : "yellow",
-  "timed_out" : false,
-  "number_of_nodes" : 1,
-  "number_of_data_nodes" : 1,      
-  "active_primary_shards" : 23,    
-  "active_shards" : 23,
-  "relocating_shards" : 0,
-  "initializing_shards" : 0,       
-  "unassigned_shards" : 20,        
-  "delayed_unassigned_shards" : 0, 
-  "number_of_pending_tasks" : 0,
-  "number_of_in_flight_fetch" : 0,
-  "task_max_waiting_in_queue_millis" : 0,
-  "active_shards_percent_as_number" : 53.48837209302325  
-}
-vagrant@elasticsearch:~$ 
 ```
 
 ---
