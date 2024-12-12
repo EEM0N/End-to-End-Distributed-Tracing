@@ -123,7 +123,7 @@ vagrant@master-node:~$
 ```
 ### Step 4: Install OpenTelemetry
 
-Instead of using the OpenTelemetry operator, install OpenTelemetry packages using pip:
+Install OpenTelemetry packages using pip:
 
 ```bash
 sudo apt update
