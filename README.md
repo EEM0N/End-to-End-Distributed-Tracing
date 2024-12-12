@@ -85,6 +85,7 @@ helm install jaeger jaegertracing/jaeger \
   --set ui.resources.limits.cpu="1"
 
 ```
+> **Note**: We can modify the resource limits based on our machine's capacity.
 
 ```bash
 vagrant@master-node:~$ kubectl get pods -o wide
