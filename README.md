@@ -6,7 +6,7 @@ This project demonstrates an end-to-end distributed tracing workflow using:
 - **Jaeger**
 - **OpenTelemetry**
 - **Elasticsearch**
-
+![Kubernetes Cluster Diagram](distributedtracing.png)
 ## Setup
 
 ### Step 1: Deploy Kubernetes Cluster
