@@ -126,7 +126,7 @@ vagrant@master-node:~$
 Instead of using the OpenTelemetry operator, install OpenTelemetry packages using pip:
 
 ```bash
-pip3 install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-jaeger
+pip3 install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-jaeger opentelemetry-instrumentation-flask
 ```
 
 Configure your application to use OpenTelemetry for tracing. Below is a basic example:
