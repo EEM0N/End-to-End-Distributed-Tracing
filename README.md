@@ -214,9 +214,11 @@ if __name__ == "__main__":
 
 3. View traces in the Jaeger UI.
 <p align="center">
+  <img src="jaegerui.PNG" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
+</p>
+<p align="center">
   <img src="jaeger.PNG" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
 </p>
-
 <p align="center">
   <img src="traceworkflow.svg" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
 </p>
