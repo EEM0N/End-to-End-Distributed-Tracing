@@ -9,9 +9,6 @@ This project demonstrates an end-to-end distributed tracing workflow using:
 <p align="center">
   <img src="distributedtracing.svg" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
 </p>
-<p align="center">
-  <img src="traceworkflow.svg" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
-</p>
 
 ### Step 1: Deploy Kubernetes Cluster
 
@@ -213,3 +210,6 @@ if __name__ == "__main__":
 2. Run your instrumented application to generate traces.
 
 3. View traces in the Jaeger UI.
+<p align="center">
+  <img src="traceworkflow.svg" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
+</p>
