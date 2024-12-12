@@ -58,7 +58,7 @@ vagrant@elasticsearch:~$
 
 ### Step 3: Install Jaeger
 
-Deploy Jaeger using Helm and configure it to use the Elasticsearch backend:
+Deploy Jaeger using Helm and configure it to use the Elasticsearch backend by following the steps in [this guide](https://github.com/jaegertracing/helm-charts/tree/main/charts/jaeger):
 
 ```bash
 helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
@@ -208,11 +208,15 @@ if __name__ == "__main__":
 
 1. Access Jaeger UI:
 
-   Open `http://<jaeger-query>:16686` in your browser.
+   Open `http://<jaeger-query>:80` in your browser.
 
 2. Run your instrumented application to generate traces.
 
 3. View traces in the Jaeger UI.
+<p align="center">
+  <img src="jaeger.PNG" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
+</p>
+
 <p align="center">
   <img src="traceworkflow.svg" width="100%" style="margin-top: 20px; margin-bottom: 20px;"/>
 </p>
