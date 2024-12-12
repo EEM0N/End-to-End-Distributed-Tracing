@@ -26,7 +26,7 @@ vagrant@master-node:~$
 ```
 ### Step 2: Deploy Elasticsearch
 
-Set up Elasticsearch on a separate VM by following the steps in [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04). Verify Elasticsearch is reachable from your Kubernetes cluster:
+Set up Elasticsearch on a separate VM by following the steps in [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04). Checks the status of Elasticsearch:
 
 ```bash
 vagrant@elasticsearch:~$ curl -X GET 'http://192.168.56.85:9200/_cluster/health?pretty'
@@ -48,6 +48,12 @@ vagrant@elasticsearch:~$ curl -X GET 'http://192.168.56.85:9200/_cluster/health?
   "active_shards_percent_as_number" : 53.48837209302325  
 }
 vagrant@elasticsearch:~$ 
+```
+#### Modify /etc/elasticsearch/elasticsearch.yml
+```bash
+network.host: 192.168.56.85
+http.port: 9200
+discovery.type: single-node
 ```
 
 ### Step 3: Install Jaeger
