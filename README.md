@@ -24,6 +24,36 @@ worker-node02   NotReady   <none>          23h   v1.29.12   192.168.56.12   <non
 worker-node03   NotReady   <none>          23h   v1.29.12   192.168.56.13   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
 vagrant@master-node:~$
 ```
+### Step 2: Install Jaeger
+
+Deploy Jaeger using Helm and configure it to use the Elasticsearch backend:
+
+```bash
+helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+helm install jaeger jaegertracing/jaeger \
+  --set provisionDataStore.cassandra=false \
+  --set storage.type=elasticsearch \
+  --set storage.elasticsearch.host=<HOST> \
+  --set storage.elasticsearch.port=<PORT>  \
+  --set agent.resources.requests.memory="512Mi" \
+  --set agent.resources.requests.cpu="500m" \
+  --set agent.resources.limits.memory="1Gi" \
+  --set agent.resources.limits.cpu="1" \
+  --set query.resources.requests.memory="512Mi" \
+  --set query.resources.requests.cpu="500m" \
+  --set query.resources.limits.memory="1Gi" \
+  --set query.resources.limits.cpu="1" \
+  --set collector.resources.requests.memory="512Mi" \
+  --set collector.resources.requests.cpu="500m" \
+  --set collector.resources.limits.memory="1Gi" \
+  --set collector.resources.limits.cpu="1" \
+  --set ui.resources.requests.memory="512Mi" \
+  --set ui.resources.requests.cpu="500m" \
+  --set ui.resources.limits.memory="1Gi" \
+  --set ui.resources.limits.cpu="1"
+
+```
+
 ```bash
 vagrant@master-node:~$ kubectl get pods -o wide
 NAME                               READY   STATUS    RESTARTS   AGE   IP               NODE            NOMINATED NODE   READINESS GATES
@@ -58,36 +88,6 @@ NAME           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTO
 jaeger-agent   1         1         1       1            1           <none>          20h   jaeger-agent   jaegertracing/jaeger-agent:1.53.0   app.kubernetes.io/component=agent,app.kubernetes.io/instance=jaeger,app.kubernetes.io/name=jaeger
 vagrant@master-node:~$ 
 ```
-### Step 2: Install Jaeger
-
-Deploy Jaeger using Helm and configure it to use the Elasticsearch backend:
-
-```bash
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
-helm install jaeger jaegertracing/jaeger \
-  --set provisionDataStore.cassandra=false \
-  --set storage.type=elasticsearch \
-  --set storage.elasticsearch.host=<HOST> \
-  --set storage.elasticsearch.port=<PORT>  \
-  --set agent.resources.requests.memory="512Mi" \
-  --set agent.resources.requests.cpu="500m" \
-  --set agent.resources.limits.memory="1Gi" \
-  --set agent.resources.limits.cpu="1" \
-  --set query.resources.requests.memory="512Mi" \
-  --set query.resources.requests.cpu="500m" \
-  --set query.resources.limits.memory="1Gi" \
-  --set query.resources.limits.cpu="1" \
-  --set collector.resources.requests.memory="512Mi" \
-  --set collector.resources.requests.cpu="500m" \
-  --set collector.resources.limits.memory="1Gi" \
-  --set collector.resources.limits.cpu="1" \
-  --set ui.resources.requests.memory="512Mi" \
-  --set ui.resources.requests.cpu="500m" \
-  --set ui.resources.limits.memory="1Gi" \
-  --set ui.resources.limits.cpu="1"
-
-```
-
 ### Step 3: Install OpenTelemetry
 
 Instead of using the OpenTelemetry operator, install OpenTelemetry packages using pip:
