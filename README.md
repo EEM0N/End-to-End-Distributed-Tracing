@@ -126,6 +126,8 @@ vagrant@master-node:~$
 Instead of using the OpenTelemetry operator, install OpenTelemetry packages using pip:
 
 ```bash
+sudo apt update
+sudo apt install python3 python3-pip
 pip3 install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-jaeger opentelemetry-instrumentation-flask
 ```
 
