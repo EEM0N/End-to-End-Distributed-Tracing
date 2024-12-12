@@ -18,9 +18,9 @@ Set up a Kubernetes cluster with one master and three worker nodes on a VM. Veri
 vagrant@master-node:~$ kubectl get nodes -o wide
 NAME            STATUS     ROLES           AGE   VERSION    INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME      
 master-node     Ready      control-plane   23h   v1.29.12   192.168.56.10   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
-worker-node01   NotReady   <none>          23h   v1.29.12   192.168.56.11   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
-worker-node02   NotReady   <none>          23h   v1.29.12   192.168.56.12   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
-worker-node03   NotReady   <none>          23h   v1.29.12   192.168.56.13   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
+worker-node01   Ready   <none>          23h   v1.29.12   192.168.56.11   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
+worker-node02   Ready   <none>          23h   v1.29.12   192.168.56.12   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
+worker-node03   Ready   <none>          23h   v1.29.12   192.168.56.13   <none>        Ubuntu 22.04.4 LTS   5.15.0-102-generic   containerd://1.7.24    
 vagrant@master-node:~$
 ```
 ### Step 2: Deploy Elasticsearch
